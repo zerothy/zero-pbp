@@ -2,11 +2,20 @@
 <html>
     <head>
         <title>ZERO E-Commerce</title>
+        <style>
+            .product {
+                flex: auto;
+                flex-direction: column;
+                justify-items: center;
+                align-items: center;
+            }
+        </style>
     </head>
 
     <body>
         <div class="product">
-            <h2>{{ name }}</h2>
+            <h1>ZERO E-Commerce</h1>
+            <p>Product: {{ name }}</p>
             <p>Price: {{ price }}</p>
             <p>Description: {{ description }}</p>
             <p>Stock: {{ stock }}</p>
