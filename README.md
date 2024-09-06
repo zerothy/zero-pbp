@@ -7,7 +7,7 @@ PBP E-Commerce
 Open [http://127.0.0.1:8000](http://127.0.0.1:8000) with your browser to see the result.
 
 Open this [link](http://joe-mathew-zeroecommerce.pbp.cs.ui.ac.id/) to see the result on PWS.
-## Questions
+## Tugas 2
 #### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 1. Membuat project baru dengan menggunakan command `django-admin startproject zeroecommerce`
 2. Membuat aplikasi baru dengan menggunakan command `python manage.py startapp main`
