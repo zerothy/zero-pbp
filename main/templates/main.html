@@ -3,22 +3,49 @@
     <head>
         <title>ZERO E-Commerce</title>
         <style>
-            .product {
+            .justify-center {
+                justify-content: center;
+            }
+            .items-center {
+                align-items: center;
+            }
+            .flex-col {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
+            }
+            .flex-row {
+                display: flex;
+                flex-direction: row;
+            }
+            .flex {
+                display: flex;
+            }
+            .gap-4 {
+                gap: 1rem;
+            }
+            .gap-1 {
+                gap: 0.25rem;
+            }
+            .m-0 {
+                margin: 0;
+            }
+            .p-0 {
+                padding: 0;
             }
         </style>
     </head>
 
     <body>
-        <div class="product">
-            <h1>ZERO E-Commerce</h1>
-            <p>Product: {{ name }}</p>
-            <p>Price: {{ price }}</p>
-            <p>Description: {{ description }}</p>
-            <p>Stock: {{ stock }}</p>
+        <div class="flex flex-col items-center justify-center">
+            <h1>{{ app_name }}</h1>
+            <div class="flex flex-row gap-4">
+                <p>{{ nama_panjang }}</p>
+                <p>{{ class_name }}</p>
+            </div>
+            <p class="m-0 p-0">Product: {{ name }}</p>
+            <p class="m-0 p-0">Price: {{ price }}</p>
+            <p class="m-0 p-0">Description: {{ description }}</p>
+            <p class="m-0 p-0">Stock: {{ stock }}</p>
         </div>
     </body>
 </html>

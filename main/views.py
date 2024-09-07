@@ -3,9 +3,13 @@ from .models import Product
 
 def show_main(request):
     context = {
-        'name' : 'Pak Bepe',
-        'price': 100000,
-        'description': 'Pak Bepe adalah seorang yang sangat baik dan ramah',
+        'app_name': 'ZERO',
+        'nama_panjang': 'Joe Mathew Rusli',
+        'class_name': 'PBP E',
+
+        'name' : 'Ayam Goreng',
+        'price': 2000,
+        'description': 'Ayam goreng yang enak dan gurih',
         'stock': 67,
     }
 
