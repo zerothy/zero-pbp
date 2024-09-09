@@ -10,7 +10,7 @@ def show_main(request):
         'name' : 'Ayam Goreng',
         'price': 2000,
         'description': 'Ayam goreng yang enak dan gurih',
-        'stock': 67,
+        'stock': 65,
     }
 
     return render(request, "main.html", context)
