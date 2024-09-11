@@ -10,7 +10,18 @@ Open this [link](http://joe-mathew-zeroecommerce.pbp.cs.ui.ac.id/) to see the re
 
 ## Table of Contents
 - [Tugas 2](#tugas-2)
+    - [Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).](#jelaskan-bagaimana-cara-kamu-mengimplementasikan-checklist-di-atas-secara-step-by-step-bukan-hanya-sekadar-mengikuti-tutorial)
+    - [Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara `urls.py`, `views.py`, `models.py`, dan berkas `html`.](#buatlah-bagan-yang-berisi-request-client-ke-web-aplikasi-berbasis-django-beserta-responnya-dan-jelaskan-pada-bagan-tersebut-kaitan-antara-urlspy-viewspy-modelspy-dan-berkas-html)
+    - [Jelaskan fungsi `git` dalam pengembangan perangkat lunak!](#jelaskan-fungsi-git-dalam-pengembangan-perangkat-lunak)
+    - [Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?](#menurut-anda-dari-semua-framework-yang-ada-mengapa-framework-django-dijadikan-permulaan-pembelajaran-pengembangan-perangkat-lunak)
+    - [Mengapa model pada Django disebut sebagai ORM?](#mengapa-model-pada-django-disebut-sebagai-orm)
 - [Tugas 3](#tugas-3)
+    - [Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?](#jelaskan-mengapa-kita-memerlukan-data-delivery-dalam-pengimplementasian-sebuah-platform)
+    - [Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?](#menurutmu-mana-yang-lebih-baik-antara-xml-dan-json-mengapa-json-lebih-populer-dibandingkan-xml)
+    - [Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?](#jelaskan-fungsi-dari-method-is_valid-pada-form-django-dan-mengapa-kita-membutuhkan-method-tersebut)
+    - [Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?](#mengapa-kita-membutuhkan-csrf_token-saat-membuat-form-di-django-apa-yang-dapat-terjadi-jika-kita-tidak-menambahkan-csrf_token-pada-form-django-bagaimana-hal-tersebut-dapat-dimanfaatkan-oleh-penyerang)
+    - [Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).](#jelaskan-bagaimana-cara-kamu-mengimplementasikan-checklist-di-atas-secara-step-by-step-bukan-hanya-sekadar-mengikuti-tutorial-1)
+    - [Screenshot hasil menggunakan postman.](#screenshot-hasil-menggunakan-postman)
 
 ## Tugas 2
 #### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
@@ -116,10 +127,10 @@ Hal yang terjadi jika dilakukan serangan seperti diatas adalah data yang ada pad
 
 #### Screenshot hasil menggunakan postman.
 1. Show XML
-![show_xml](./public/images/tugas2/tugas2_xml.png)
+![show_xml](./public/images/tugas3/tugas3_xml.png)
 2. Show JSON
-![show_json](./public/images/tugas2/tugas2_json.png)
+![show_json](./public/images/tugas3/tugas3_json.png)
 3. Show XML by ID
-![show_xml_by_id](./public/images/tugas2/tugas2_xmlid.png)
+![show_xml_by_id](./public/images/tugas3/tugas3_xmlid.png)
 4. Show JSON by ID
-![show_json_by_id](./public/images/tugas2/tugas2_jsonid.png)
+![show_json_by_id](./public/images/tugas3/tugas3_jsonid.png)
