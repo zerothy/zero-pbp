@@ -1,51 +1,31 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>ZERO E-Commerce</title>
-        <style>
-            .justify-center {
-                justify-content: center;
-            }
-            .items-center {
-                align-items: center;
-            }
-            .flex-col {
-                display: flex;
-                flex-direction: column;
-            }
-            .flex-row {
-                display: flex;
-                flex-direction: row;
-            }
-            .flex {
-                display: flex;
-            }
-            .gap-4 {
-                gap: 1rem;
-            }
-            .gap-1 {
-                gap: 0.25rem;
-            }
-            .m-0 {
-                margin: 0;
-            }
-            .p-0 {
-                padding: 0;
-            }
-        </style>
-    </head>
+{% extends "base.html" %}
+{% block content %}
+<div class="flex flex-col items-center justify-center">
+    <h1>{{ app_name }}</h1>
+    <div class="flex flex-row gap-4">
+        <p>{{ nama_panjang }}</p>
+        <p>{{ class_name }}</p>
+    </div>
+    <p class="m-0 p-0">Product: {{ name }}</p>
+    <p class="m-0 p-0">Price: {{ price }}</p>
+    <p class="m-0 p-0">Description: {{ description }}</p>
+    <p class="m-0 p-0">Stock: {{ stock }}</p>
 
-    <body>
-        <div class="flex flex-col items-center justify-center">
-            <h1>{{ app_name }}</h1>
-            <div class="flex flex-row gap-4">
-                <p>{{ nama_panjang }}</p>
-                <p>{{ class_name }}</p>
+    <a href="{% url 'main:create_product' %}" class="m-4">
+        <button>Add product</button>
+    </a>
+
+    {% if not product %}
+        <p>No product displayed yet.</p>
+    {% else %}
+        {% for item in product %}
+            <div class="flex flex-row gap-1">
+                <p>{{ item.name }}</p>
+                <p>{{ item.price }}</p>
+                <p>{{ item.description }}</p>
+                <p>{{ item.stock }}</p>
             </div>
-            <p class="m-0 p-0">Product: {{ name }}</p>
-            <p class="m-0 p-0">Price: {{ price }}</p>
-            <p class="m-0 p-0">Description: {{ description }}</p>
-            <p class="m-0 p-0">Stock: {{ stock }}</p>
-        </div>
-    </body>
-</html>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock content %}
