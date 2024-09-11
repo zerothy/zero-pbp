@@ -2,7 +2,7 @@ Nama : Joe Mathew Rusli
 NPM : 2306152310
 Kelas : PBP E
 
-PBP E-Commerce
+ZERO E-Commerce
 
 Open [http://127.0.0.1:8000](http://127.0.0.1:8000) with your browser to see the result.
 
