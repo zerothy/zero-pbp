@@ -134,3 +134,30 @@ Hal yang terjadi jika dilakukan serangan seperti diatas adalah data yang ada pad
 ![show_xml_by_id](./public/images/tugas3/tugas3_xmlid.png)
 4. Show JSON by ID
 ![show_json_by_id](./public/images/tugas3/tugas3_jsonid.png)
+
+---
+## Tugas 4
+#### Apa perbedaan antara `HttpResponseRedirect()` dan `redirect()`
+`HttpResponseRedirect()` hanya dapat menerima URL lengkap sebagai argumen, sedangkan `redirect()` dapat menerima URL lengkap, nama view, dan nama URL pattern sebagai argumen. `redirect()` juga dapat menerima argumen tambahan seperti `args` dan `kwargs`. Sehingga, `redirect()` lebih fleksibel dan dapat digunakan dalam berbagai kasus.
+
+#### Jelaskan cara kerja penghubungan model `Product` dengan `User`!
+Model `Product` dan `User` dapat dihubungkan menggunakan relasi `ForeignKey`. Relasi `ForeignKey` memungkinkan satu model untuk memiliki banyak model lainnya. Dengan menggunakan relasi `ForeignKey`, model `Product` dapat memiliki relasi dengan model `User`.
+```python
+class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+```
+
+#### Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
+Authentication adalah proses untuk memverifikasi identitas pengguna, sedangkan authorization adalah proses untuk memverifikasi hak akses pengguna. Saat pengguna login, Django akan melakukan proses authentication untuk memverifikasi identitas pengguna. Setelah proses authentication berhasil, Django akan melakukan proses authorization untuk memverifikasi hak akses pengguna. Django mengimplementasikan kedua konsep tersebut dengan menggunakan `User` model dan `auth` views. `User` model digunakan untuk menyimpan informasi pengguna seperti username, password, dan email. `auth` views digunakan untuk melakukan proses authentication dan authorization. Django juga menyediakan decorator `@login_required` untuk membatasi akses pengguna yang belum login. Dengan menggunakan decorator `@login_required`, Django akan memastikan bahwa pengguna yang belum login tidak dapat mengakses halaman tertentu.
+
+#### Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
+Django mengingat pengguna yang telah login dengan menggunakan session. Session adalah cara untuk menyimpan informasi pengguna di server. Django menyimpan session pengguna di database atau cache. Django juga menggunakan cookies untuk menyimpan session ID pengguna. Cookies adalah cara untuk menyimpan informasi pengguna di browser. Cookies digunakan untuk menyimpan session ID pengguna, token CSRF, dan preferensi pengguna. Tidak semua cookies aman digunakan. Cookies yang tidak aman dapat digunakan untuk melacak pengguna, menyimpan informasi sensitif, dan menyebabkan serangan XSS (Cross-Site Scripting). Oleh karena itu, developers harus berhati-hati dalam menggunakan cookies dan memastikan bahwa cookies yang digunakan aman.
+
+#### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+1. Membuat fitur login dan register dengan menggunakan `auth` views di Django. Fitur logout juga diimplementasikan. Dengan menggunakan fitur-fitur yang disediakan oleh Django, saya dapat membuat aplikasi web yang memiliki fitur login, register, dan logout dengan mudah.
+
+2. Membuat 2 akun dengan meregistrasi di bagian `/register`. Setelah itu, login dengan salah satu akun yang telah dibuat, satu per satu. Setelah login, kemudian mengakses `/create` untuk menambahkan 3 dummy data dengan model `Product`. Setelah itu, logout dan login dengan akun yang lain.
+
+3. Menghubungkan `User` dengan `Product` dengan menambahkan field `user` pada model `Product` dengan relasi `ForeignKey`. Dengan menggunakan relasi `ForeignKey`, saya dapat menghubungkan model `Product` dengan model `User`.
+
+4. Menampilkan `last_login` pada web dengan menambahkan field `last_login` pada model `User`. Yang dimana field tersebut menggunakan dan menerapkan `cookies` untuk menyimpan informasi pengguna di browser.
