@@ -6,7 +6,7 @@ ZERO E-Commerce
 
 Open [http://127.0.0.1:8000](http://127.0.0.1:8000) with your browser to see the result.
 
-Open this [link](http://joe-mathew-zeroecommerce.pbp.cs.ui.ac.id/) to see the result on PWS.
+Open this [link](http://joe-mathew-zero.pbp.cs.ui.ac.id/) to see the result on PWS.
 
 ## Table of Contents
 - [Tugas 2](#tugas-2)
