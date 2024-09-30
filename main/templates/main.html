@@ -30,6 +30,20 @@
                 <p>{{ item.price }}</p>
                 <p>{{ item.description }}</p>
                 <p>{{ item.stock }}</p>
+                <p>
+                    <a href="{% url 'main:edit_product' item.pk %}">
+                        <button>
+                            Edit
+                        </button>
+                    </a>
+                </p>
+                <p>
+                    <a href="{% url 'main:delete_product' item.pk %}">
+                        <button>
+                            Delete
+                        </button>
+                    </a>
+                </p>
             </div>
         {% endfor %}
     {% endif %}

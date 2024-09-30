@@ -3,56 +3,45 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZERO E-Commerce</title>
-    <style>
-        .justify-center {
-            justify-content: center;
+    {% block meta %} 
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock meta %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                poppins: ['Poppins', 'sans-serif'],
+                lora: ['Lora', 'serif'],
+              },
+              colors: {
+                background: '#ffe8e0',
+                backgroundSecondary: '#ffd7d5',
+                base: {
+                    white: '#ffffff',
+                    black: '#000000',
+                },
+                logo: {
+                    primary: '#003366',
+                    secondary: '#FFFFD1',
+                },
+              },
+            },
+          },
         }
-
-        .items-center {
-            align-items: center;
-        }
-
-        .flex-col {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .flex-row {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .flex {
-            display: flex;
-        }
-
-        .gap-4 {
-            gap: 1rem;
-        }
-
-        .gap-1 {
-            gap: 0.25rem;
-        }
-
-        .m-0 {
-            margin: 0;
-        }
-
-        .p-0 {
-            padding: 0;
-        }
-
-        .m-4 {
-            margin: 1rem;
-        }
-    </style>
-    {% block meta %} {% endblock meta %}
+      </script>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}"/>
 </head>
 
-<body>
+<body class="font-lora">
     {% block content %} {% endblock content %}
 </body>
 

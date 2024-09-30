@@ -1,10 +1,10 @@
 import datetime
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
 from main.forms import ProductForm
 from main.models import Product
@@ -45,6 +45,24 @@ def create_product(request):
 
     return render(request, "create_product.html", context)
 
+def edit_product(request, id):
+    product = Product.objects.get(pk = id)
+
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+
+def delete_product(request, id):
+    product = Product.objects.get(pk = id)
+    product.delete()
+
+    return HttpResponseRedirect(reverse('main:show_main'))
+
 def register(request):
     form = UserCreationForm()
 
@@ -67,6 +85,8 @@ def login_user(request):
             response = HttpResponseRedirect(reverse("main:show_main"))
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response
+        else:
+            messages.error(request, 'Invalid username or password.')
    else:
         form = AuthenticationForm(request)
    context = {'form': form}

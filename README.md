@@ -39,7 +39,7 @@ Open this [link](http://joe-mathew-zero.pbp.cs.ui.ac.id/) to see the result on P
 6. Membuat routing yang mengarah ke main dengan menambahkan path ke `urls.py` di folder zeroecommerce
 
 #### Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara `urls.py`, `views.py`, `models.py`, dan berkas `html`.
-![alt text](image.png)
+![alt text](/static/images/image.png)
 
 #### Jelaskan fungsi `git` dalam pengembangan perangkat lunak!
 Git adalah sebuah sistem yang memungkinkan developers untuk berkolaborasi dalam pembuatan suatu program dengan cara mengelola versi dari program tersebut. Git memungkinkan developers untuk membuat branch baru, merge branch, dan melihat perubahan yang terjadi pada program. Dengan menggunakan git, developers dapat bekerja secara bersamaan tanpa mengalami konflik pada program yang sedang dikerjakan.
@@ -127,13 +127,13 @@ Hal yang terjadi jika dilakukan serangan seperti diatas adalah data yang ada pad
 
 #### Screenshot hasil menggunakan postman.
 1. Show XML
-![show_xml](./public/images/tugas3/tugas3_xml.png)
+![show_xml](/static/images/tugas3/tugas3_xml.png)
 2. Show JSON
-![show_json](./public/images/tugas3/tugas3_json.png)
+![show_json](/static/images/tugas3/tugas3_json.png)
 3. Show XML by ID
-![show_xml_by_id](./public/images/tugas3/tugas3_xmlid.png)
+![show_xml_by_id](/static/images/tugas3/tugas3_xmlid.png)
 4. Show JSON by ID
-![show_json_by_id](./public/images/tugas3/tugas3_jsonid.png)
+![show_json_by_id](/static/images/tugas3/tugas3_jsonid.png)
 
 ---
 ## Tugas 4
