@@ -25,6 +25,9 @@
               colors: {
                 background: '#ffe8e0',
                 backgroundSecondary: '#ffd7d5',
+                text: {
+                    primary: '#180e4c',
+                },
                 base: {
                     white: '#ffffff',
                     black: '#000000',
@@ -41,8 +44,9 @@
     <link rel="stylesheet" href="{% static 'css/global.css' %}"/>
 </head>
 
-<body class="font-lora">
+<body class="font-lora overflow-x-hidden">
     {% block content %} {% endblock content %}
+    {% include 'footer.html' %}
 </body>
 
 </html>

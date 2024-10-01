@@ -1,0 +1,83 @@
+<nav
+    class="absolute w-screen top-0 left-0 z-40 h-max py-4 px-6 justify-between items-center font-poppins flex flex-row">
+    <div class="nav-item" style="animation-delay: 0.1s;">
+        <a href="#">
+            <p class="font-lora text-2xl text-text-primary font-semibold">Zero</p>
+        </a>
+    </div>
+
+    <div class="hidden lg:flex flex-row gap-8">
+        <a href="#" class="nav-item hover:underline" style="animation-delay: 0.2s;">
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item hover:underline" style="animation-delay: 0.3s;">
+            <span>About</span>
+        </a>
+        <a href="#" class="nav-item hover:underline" style="animation-delay: 0.4s;">
+            <span>Products</span>
+        </a>
+    </div>
+
+    <div class="hidden lg:flex flex-row gap-8 relative">
+        <span class="nav-item cursor-pointer hover:font-semibold transition-all duration-150" id="user-menu"
+            style="animation-delay: 0.5s;">{{ username }}</span>
+        <div id="dropdown-menu" class="absolute right-0 top-full mt-1 w-max z-50">
+            <a href='{% url "main:logout" %}' id="logoutButton"
+                class="block px-3 py-2 text-sm text-gray-700 hover:bg-black hover:bg-opacity-5">Logout</a>
+        </div>
+    </div>
+
+    <div class="lg:hidden flex flex-row gap-8">
+        <a href="#" class="nav-item hover:underline" style="animation-delay: 0.6s;">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <div class="lg:hidden absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-30 hidden" id="mobile-menu">
+        <div class="flex flex-col gap-8 h-full justify-center items-center text-xl">
+            <a href="#" class="nav-item hover:underline" style="animation-delay: 0.2s;">
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item hover:underline" style="animation-delay: 0.1s;">
+                <span>About</span>
+            </a>
+            <a href="#" class="nav-item hover:underline" style="animation-delay: 0.2s;">
+                <span>Products</span>
+            </a>
+            <a href='{% url "main:logout" %}' id="logoutButton" class="nav-item block px-3 py-2 text-xl  text-red-600 font-semibold hover:bg-opacity-5" style="animation-delay: 0.1s;">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const userMenu = document.getElementById("user-menu");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+
+    userMenu.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!userMenu.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
+
+    document.getElementById("logoutButton").addEventListener('click', () => {
+        if (confirm('Are you sure you want to logout?')) {
+            window.location.href = "/logout";
+        }
+    });
+
+    document.querySelector('.fa-bars').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    document.getElementById('mobile-menu').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.add('hidden');
+    });
+
+    document.getElementById('mobile-menu').addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+</script>

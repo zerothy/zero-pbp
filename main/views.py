@@ -7,23 +7,18 @@ from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core import serializers
 from main.forms import ProductForm
-from main.models import Product
+from main.models import Product, FeaturedProduct
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 @login_required(login_url='main:login')
 def show_main(request):
     product = Product.objects.filter(user=request.user)
+    featured_product = FeaturedProduct.objects.filter(product__user=request.user)
 
     context = {
-        'app_name': 'ZERO',
-        'nama_panjang': request.user.username,
-        'class_name': 'PBP E',
-
-        'name' : 'Ayam Goreng',
-        'price': 2000,
-        'description': 'Ayam goreng yang enak dan gurih',
-        'stock': 65,
+        'username': request.user.username,
+        'featured_product': featured_product,
         'product': product,
         'last_login': request.COOKIES['last_login']
     }

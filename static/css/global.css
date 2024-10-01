@@ -1,0 +1,27 @@
+@keyframes slideFromMiddle {
+    from {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.nav-item {
+    animation: slideFromMiddle 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+#dropdown-menu {
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+#dropdown-menu.show {
+    max-height: 40px;
+    opacity: 1;
+}

@@ -16,3 +16,10 @@ class Product(models.Model):
     @property
     def is_stock_available(self):
         return self.stock > 0
+
+class FeaturedProduct(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    is_featured = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.product.name

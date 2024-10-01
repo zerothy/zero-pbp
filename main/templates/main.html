@@ -1,51 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="flex flex-col items-center justify-center">
-    <h1>{{ app_name }}</h1>
-    <div class="flex flex-row gap-4">
-        <p>{{ nama_panjang }}</p>
-        <p>{{ class_name }}</p>
-    </div>
-    <p class="m-0 p-0">Product: {{ name }}</p>
-    <p class="m-0 p-0">Price: {{ price }}</p>
-    <p class="m-0 p-0">Description: {{ description }}</p>
-    <p class="m-0 p-0">Stock: {{ stock }}</p>
-
-    <a href="{% url 'main:create_product' %}" class="m-4">
+{% include 'navbar.html' %}
+<div class="flex flex-col max-w-screen min-h-full pt-20 bg-gradient-to-tr from-background via-[#f5ccd4] to-[#ffe3fe] cursor-default">
+    <a href="{% url 'main:create_product' %}" class="m-4 font-poppins hover:underline w-max rounded-2xl text-text-primary shadow-md hover:text-text-primary hover:bg-white transition-all duration-300 px-2 py-1">
         <button>Add product</button>
     </a>
 
-    <a href="{% url 'main:logout' %}">
-        <button>Logout</button>
-    </a>
-
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
-
-    {% if not product %}
-        <p>No product displayed yet.</p>
-    {% else %}
-        {% for item in product %}
-            <div class="flex flex-row gap-1">
-                <p>{{ item.name }}</p>
-                <p>{{ item.price }}</p>
-                <p>{{ item.description }}</p>
-                <p>{{ item.stock }}</p>
-                <p>
-                    <a href="{% url 'main:edit_product' item.pk %}">
-                        <button>
-                            Edit
-                        </button>
-                    </a>
-                </p>
-                <p>
-                    <a href="{% url 'main:delete_product' item.pk %}">
-                        <button>
-                            Delete
-                        </button>
-                    </a>
-                </p>
-            </div>
-        {% endfor %}
-    {% endif %}
+    <div class="w-full min-h-screen p-8">
+        {% if not product %}
+        <div class="flex flex-col justify-center items-center w-full h-full">
+            <p>No product displayed yet.</p>
+            <img src="/static/images/sedih_banget.png" alt="sedih_banget" class="w-32 h-32">
+        </div>
+        {% else %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {% for item in product %}
+                {% include 'card_product.html' with item=item %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
 </div>
+
 {% endblock content %}
