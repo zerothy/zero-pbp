@@ -22,6 +22,18 @@ Open this [link](http://joe-mathew-zero.pbp.cs.ui.ac.id/) to see the result on P
     - [Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?](#mengapa-kita-membutuhkan-csrf_token-saat-membuat-form-di-django-apa-yang-dapat-terjadi-jika-kita-tidak-menambahkan-csrf_token-pada-form-django-bagaimana-hal-tersebut-dapat-dimanfaatkan-oleh-penyerang)
     - [Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).](#jelaskan-bagaimana-cara-kamu-mengimplementasikan-checklist-di-atas-secara-step-by-step-bukan-hanya-sekadar-mengikuti-tutorial-1)
     - [Screenshot hasil menggunakan postman.](#screenshot-hasil-menggunakan-postman)
+- [Tugas 4](#tugas-4)
+    - [Apa perbedaan antara `HttpResponseRedirect()` dan `redirect()`](#apa-perbedaan-antara-httpresponseredirect-dan-redirect)
+    - [Jelaskan cara kerja penghubungan model `Product` dengan `User`!](#jelaskan-cara-kerja-penghubungan-model-product-dengan-user)
+    - [Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.](#apa-perbedaan-antara-authentication-dan-authorization-apakah-yang-dilakukan-saat-pengguna-login-jelaskan-bagaimana-django-mengimplementasikan-kedua-konsep-tersebut)
+    - [Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?](#bagaimana-django-mengingat-pengguna-yang-telah-login-jelaskan-kegunaan-lain-dari-cookies-dan-apakah-semua-cookies-aman-digunakan)
+    - [Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).](#jelaskan-bagaimana-cara-kamu-mengimplementasikan-checklist-di-atas-secara-step-by-step-bukan-hanya-sekadar-mengikuti-tutorial-1)
+- [Tugas 5](#tugas-5)
+    - [Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!](#jika-terdapat-beberapa-css-selector-untuk-suatu-elemen-html-jelaskan-urutan-prioritas-pengambilan-css-selector-tersebut)
+    - [Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!](#mengapa-responsive-design-menjadi-konsep-yang-penting-dalam-pengembangan-aplikasi-web-berikan-contoh-aplikasi-yang-sudah-dan-belum-menerapkan-responsive-design)
+    - [Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!](#jelaskan-perbedaan-antara-margin-border-dan-padding-serta-cara-untuk-mengimplementasikan-ketiga-hal-tersebut)
+    - [Jelaskan konsep flex box dan grid layout beserta kegunaannya!](#jelaskan-konsep-flex-box-dan-grid-layout-beserta-kegunaannya)
+    - [Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!](#jelaskan-bagaimana-cara-kamu-mengimplementasikan-checklist-di-atas-secara-step-by-step-bukan-hanya-sekadar-mengikuti-tutorial-1)
 
 ## Tugas 2
 #### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
@@ -161,3 +173,188 @@ Django mengingat pengguna yang telah login dengan menggunakan session. Session a
 3. Menghubungkan `User` dengan `Product` dengan menambahkan field `user` pada model `Product` dengan relasi `ForeignKey`. Dengan menggunakan relasi `ForeignKey`, saya dapat menghubungkan model `Product` dengan model `User`.
 
 4. Menampilkan `last_login` pada web dengan menambahkan field `last_login` pada model `User`. Yang dimana field tersebut menggunakan dan menerapkan `cookies` untuk menyimpan informasi pengguna di browser.
+
+---
+## Tugas 5
+#### Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+Urutan prioritas pengambilan CSS selector, juga dikenal sebagai specificity (spesifisitas), adalah sebagai berikut (dari yang tertinggi ke terendah):
+
+1. **Inline Styles**: Gaya yang diterapkan langsung pada elemen HTML menggunakan atribut `style`.
+2. **ID Selectors**: Selector yang menggunakan ID elemen (`#id`).
+3. **Class Selectors, Attribute Selectors, dan Pseudo-Classes**: Selector yang menggunakan kelas (`.class`), atribut (`[attribute]`), dan pseudo-classes (`:pseudo-class`).
+4. **Element Selectors dan Pseudo-Elements**: Selector yang menggunakan nama elemen (`element`) dan pseudo-elements (`::pseudo-element`).
+5. **Universal Selector (`*`)**: Selector yang berlaku untuk semua elemen.
+
+Jika ada konflik antara selector dengan spesifisitas yang sama, selector yang ditulis terakhir dalam file CSS akan digunakan.
+
+### Contoh:
+```html
+<p id="paragraph" class="text" style="color: red;">Hello, World!</p>
+```
+
+```css
+#paragraph { color: blue; }
+.text { color: green; }
+p { color: yellow; }
+```
+
+#### Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+Responsive design menjadi konsep penting dalam pengembangan aplikasi web karena:
+
+1. Beragamnya perangkat: Pengguna mengakses web dari berbagai perangkat dengan ukuran layar yang berbeda-beda.
+2. Pengalaman pengguna: Memastikan konten dapat diakses dan mudah dibaca di semua perangkat.
+3. SEO: Google mempertimbangkan mobile-friendliness dalam peringkat pencarian.
+4. Efisiensi: Satu desain yang responsif lebih efisien daripada membuat versi terpisah untuk desktop dan mobile.
+
+- Contoh Aplikasi yang Menerapkan Responsive Design
+    - **Amazon**: Situs e-commerce ini menyesuaikan tata letak dan ukuran elemen berdasarkan ukuran layar.
+- Contoh Aplikasi yang Belum Menerapkan Responsive Design
+    - Beberapa situs pemerintahan lama atau situs perusahaan kecil yang belum diperbarui sering kali tidak responsif dan sulit diakses dari perangkat mobile.
+
+
+#### Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+a. **Margin**:
+- Ruang di luar elemen, di antara elemen tersebut dan elemen-elemen sekitarnya.
+- Tidak memiliki warna atau latar belakang.
+- Digunakan untuk mengatur jarak antar elemen.
+
+b. **Border**:
+- Garis yang mengelilingi elemen, terletak di antara padding dan margin.
+- Dapat memiliki warna, gaya (solid, dashed, dll), dan ketebalan.
+- Digunakan untuk memberi batas visual pada elemen.
+
+c. **Padding**:
+- Ruang di dalam elemen, antara konten dan border.
+- Dapat memiliki warna latar belakang (mengikuti background elemen).
+- Digunakan untuk memberi ruang di sekitar konten elemen.
+
+### Visualisasi:
+```
++------------------------+
+|        Margin          |
+|  +------------------+  |
+|  |     Border       |  |
+|  |  +------------+  |  |
+|  |  |  Padding   |  |  |
+|  |  |  +------+  |  |  |
+|  |  |  |Content| |  |  |
+|  |  |  +------+  |  |  |
+|  |  +------------+  |  |
+|  +------------------+  |
++------------------------+
+```
+
+#### Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+Flexbox adalah model layout satu dimensi yang dirancang untuk menyusun elemen dalam baris atau kolom. Ini memberikan cara yang efisien untuk mendistribusikan ruang dan menyelaraskan item dalam sebuah container, bahkan ketika ukurannya tidak diketahui atau dinamis.
+
+#### Kegunaan Flexbox:
+- Membuat layout yang responsif dan fleksibel
+- Menyelaraskan item secara vertikal dan horizontal dengan mudah
+- Mengubah urutan tampilan elemen tanpa mengubah HTML
+- Membuat navigasi bar yang responsif
+- Membuat card layout yang fleksibel
+
+#### Konsep Utama Flexbox:
+- **Flex Container**: Elemen induk yang memiliki `display: flex`
+- **Flex Items**: Elemen-elemen anak langsung dari flex container
+- **Main Axis**: Sumbu utama flex container (horizontal untuk `row`, vertikal untuk `column`)
+- **Cross Axis**: Sumbu yang tegak lurus dengan main axis
+
+#### Properties Penting:
+- `display: flex` pada container
+- `flex-direction`, `justify-content`, `align-items` pada container
+- `flex-grow`, `flex-shrink`, `flex-basis` pada items
+
+### Grid Layout
+Grid Layout adalah sistem layout dua dimensi yang memungkinkan Anda untuk mengatur konten dalam baris dan kolom secara bersamaan. Ini memberikan kontrol yang lebih besar atas layout halaman dibandingkan dengan Flexbox.
+
+#### Kegunaan Grid Layout:
+- Membuat layout halaman kompleks dengan mudah
+- Mengatur elemen dalam grid yang presisi
+- Membuat layout responsif yang dapat berubah drastis pada breakpoint berbeda
+- Menangani layout dua dimensi dengan lebih efisien dibanding Flexbox
+
+#### Konsep Utama Grid:
+- **Grid Container**: Elemen induk yang memiliki `display: grid`
+- **Grid Items**: Elemen-elemen anak langsung dari grid container
+- **Grid Lines**: Garis pembatas yang membentuk struktur grid
+- **Grid Tracks**: Baris atau kolom dalam grid
+- **Grid Cells**: Perpotongan antara baris dan kolom
+- **Grid Areas**: Kumpulan sel yang membentuk area tertentu
+
+#### Properties Penting:
+- `display: grid` pada container
+- `grid-template-columns`, `grid-template-rows`, `grid-gap` pada container
+- `grid-column`, `grid-row` pada items
+
+#### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+1. Mengimplementasi fungsi mengedit dan menghapus produk dengan menambahkan fungsi tersebut pada `views.py`.
+```python
+def edit_product(request, id):
+    product = Product.objects.get(pk = id)
+
+    form = ProductForm(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_product.html", context)
+```
+
+```python
+def delete_product(request, id):
+    product = Product.objects.get(pk = id)
+    product.delete()
+
+    return HttpResponseRedirect(reverse('main:show_main'))
+```
+
+2. Mendesign halaman `login`, `register`, dan `add product` dengan menggunakan CSS Flexbox dan Grid Layout.
+```html
+<div class="container">
+    <div class="login">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+```
+
+```css
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+```
+
+3. Mendesign halaman daftar produk semenarik mungkin dengan menggunakan CSS, juga membuat `card_product.html` untuk menampilkan produk.
+```html
+<div class="bg-white rounded-lg shadow-md overflow-hidden max-w-xs w-full">
+    <img src="https://images.unsplash.com/photo-1504198458649-3128b932f49e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="{{ item.name }}" class="w-full h-48 object-cover">
+    <div class="p-4">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ item.name }}</h2>
+        <p class="text-green-600 font-bold text-lg mb-2">${{ item.price }}</p>
+        <p class="text-gray-600 text-sm mb-4">{{ item.description }}</p>
+        <p class="text-sm text-gray-500 mb-2">In stock: {{ item.stock }}</p>
+        <div class="flex justify-between">
+            <a href="{% url 'main:edit_product' item.pk %}" class="bg-background text-gray-600 px-6 flex justify-center items-center rounded hover:bg-backgroundSecondary transition duration-300 font-poppins">Edit</a>
+            <a href="{% url 'main:delete_product' item.pk %}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300 font-poppins">Delete</a>
+        </div>
+    </div>
+</div>
+```
+
+4. Membuat navbar yang responsif dengan menggunakan CSS Flexbox. (Kurang lebih seperti ini konsepnya)
+```html
+<nav class="flex items-center justify-between flex-wrap bg-background p-6">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <span class="font-semibold text-xl tracking-tight">Zero</span>
+    </div>
+</nav>
+```
