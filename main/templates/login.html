@@ -7,7 +7,7 @@
 {% endblock meta %}
 
 {% block content %}
-<div class="w-screen h-screen bg-background relative flex items-center justify-center">
+<div class="w-screen h-screen bg-background relative flex items-center justify-center py-20">
   <div class="w-screen h-screen flex flex-col justify-between absolute left-0 top-0 z-0">
     <div class="flex flex-row justify-between">
       <p class="font-lora p-4 text-2xl text-logo-primary font-semibold">Zero</p>
@@ -18,16 +18,16 @@
       <div></div>
     </div>
   </div>
-  <div class="relative z-10 bg-base-white w-[52rem] h-[35rem] font-poppins flex flex-row p-6 rounded-3xl shadow-xl shadow-backgroundSecondary">
-    <div class="bg-base-white h-full w-7/12 rounded-l-2xl relative">
+  <div class="relative z-10 bg-base-white w-[52rem] h-full lg:h-[35rem] font-poppins flex flex-row p-6 rounded-3xl shadow-xl shadow-backgroundSecondary lg:justify-center justify-normal">
+    <div class="bg-base-white h-full w-7/12 rounded-l-2xl relative hidden lg:flex">
       <div class="bg-background h-full w-[78%] rounded-2xl"></div>
       <img src="{% static 'images/login_doodle.png' %}" alt="login_doodle" class="absolute top-0 left-0 w-full h-full object-cover rounded-2xl" />
     </div>
 
-    <div class="gap-10 flex flex-col justify-center items-center">
-      <h1 class="text-2xl font-black">Login</h1>
+    <div class="gap-10 flex flex-col justify-center items-center w-full lg:w-80">
+      <h1 class="text-2xl lg:text-4xl font-black">Login</h1>
   
-      <form method="POST" action="" class="w-full max-w-sm">
+      <form method="POST" action="" class="w-full max-w-xl lg:w-full">
         {% csrf_token %}
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-1" for="username">
@@ -65,7 +65,7 @@
       {% if messages %}
       <ul>
         {% for message in messages %}
-        <li class="{% if message.tags == 'success' %}text-green-500{% else %}text-red-500{% endif %} text-sm">{{ message }}</li>
+        <li class="{% if message.tags == 'success' %}text-green-500{% else %}hidden{% endif %} text-sm">{{ message }}</li>
         {% endfor %}
       </ul>
       {% endif %}

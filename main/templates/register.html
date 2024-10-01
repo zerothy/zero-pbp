@@ -1,32 +1,109 @@
 {% extends 'base.html' %}
+{% load form_tags %}
+{% load static %}
 
 {% block meta %}
 <title>Register</title>
 {% endblock meta %}
 
 {% block content %}
+<div class="w-screen h-screen bg-background relative flex items-center justify-center py-20">
+  <div class="w-screen h-screen flex flex-col justify-between absolute left-0 top-0 z-0">
+    <div class="flex flex-row justify-between">
+      <p class="font-lora p-4 text-2xl text-logo-primary font-semibold">Zero</p>
+      <div class="w-[25rem] h-[22rem] bg-backgroundSecondary rounded-bl-full shadow-[-100px_10px_50px_100px] shadow-backgroundSecondary"></div>
+    </div>
+    <div class="flex flex-row">
+      <div class="w-[17rem] h-[14rem] bg-backgroundSecondary rounded-tr-full shadow-[50px_10px_50px_100px] shadow-backgroundSecondary"></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="relative z-10 bg-base-white w-[52rem] h-full lg:h-[35rem] font-poppins flex flex-row p-6 rounded-3xl shadow-xl shadow-backgroundSecondary lg:justify-center justify-normal">
+    <div class="bg-base-white h-full w-7/12 rounded-l-2xl relative hidden lg:flex">
+      <div class="bg-background h-full w-[78%] rounded-2xl"></div>
+      <img src="{% static 'images/register_doodle.png' %}" alt="register_doodle" class="absolute top-0 left-0 w-full h-full object-cover rounded-2xl" />
+    </div>
 
-<div class="login">
-    <h1>Register</h1>
-
-    <form method="POST">
+    <div class="gap-6 flex flex-col justify-center items-center w-full lg:w-80 relative">
+        <a href="{% url 'main:login' %}">
+            <div class="absolute -left-10 top-4 w-10 h-10 rounded-full flex justify-center items-center hover:bg-slate-200 hover:bg-opacity-50 transition-all duration-150">
+                <i class="fa fa-solid fa-arrow-left"></i>
+            </div>
+        </a>
+        <h1 class="text-2xl lg:text-4xl font-black">Register</h1>
+  
+      <form method="POST" action="" class="w-full max-w-xl lg:w-full">
         {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-            <tr>
-                <td></td>
-                <td><input type="submit" name="submit" value="Daftar" /></td>
-            </tr>
-        </table>
-    </form>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-1" for="username">
+            Username
+          </label>
+          <div class="relative focus-within:text-yellow-300">
+            <i class="fa fa-regular fa-user absolute inset-y-0 left-0 flex items-center pl-2"></i>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-6 text-gray-300">|</span>
+            {{ form.username|add_class:"shadow appearance-none border rounded-lg w-full py-1.5 px-2 pl-8 text-gray-700 leading-tight focus:outline-yellow-300 focus:bg-yellow-50 focus:bg-opacity-50" }}
+          </div>
+        </div>
+        <div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-xs font-semibold mb-1">
+                    Password must:
+                </label>
+                <ul class="list-disc list-inside text-gray-700 text-xs ml-5">
+                    <li>It's not similar to a username.</li>
+                    <li>It has more than 8 characters.</li>
+                    <li>Make it strong and less common.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mb-2">
+            <label class="block text-gray-700 text-sm font-bold mb-1" for="password1">
+                Password
+            </label>
+            <div class="relative focus-within:text-yellow-300">
+                <i class="fa fa-solid fa-lock absolute inset-y-0 left-0 flex items-center pl-2"></i>
+                <span class="absolute inset-y-0 left-0 flex items-center pl-6 text-gray-300">|</span>
+                {{ form.password1|add_class:"shadow appearance-none border rounded-lg w-full py-1.5 px-2 pl-8 text-gray-700 leading-tight focus:outline-yellow-300 focus:bg-yellow-50 focus:bg-opacity-50" }}
+            </div>
+        </div>
+        <div class="mb-2">
+          <label class="block text-gray-700 text-sm font-bold mb-1" for="password2">
+            Confirm Password
+          </label>
+          <div class="relative focus-within:text-yellow-300 mb-4">
+            <i class="fa fa-solid fa-unlock absolute inset-y-0 left-0 flex items-center pl-2"></i>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-6 text-gray-300">|</span>
+            {{ form.password2|add_class:"shadow appearance-none border rounded-lg w-full py-1.5 px-2 pl-8 text-gray-700 leading-tight focus:outline-yellow-300 focus:bg-yellow-50 focus:bg-opacity-50" }}
+          </div>
+            {% if form.username.errors %}
+            {% for error in form.username.errors %}
+                <p class="text-red-500 text-xs italic">- {{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            {% if form.password1.errors %}
+            {% for error in form.password1.errors %}
+                <p class="text-red-500 text-xs italic">- {{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            {% if form.password2.errors %}
+            {% for error in form.password2.errors %}
+                <p class="text-red-500 text-xs italic">- {{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="flex items-center justify-between mt-5">
+          <button class="w-full bg-red-400 text-base-white text-sm py-2 rounded-lg hover:bg-red-500 transition-all duration-75" type="submit">
+            Register
+          </button>
+        </div>
+      </form>
 
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+      <div class="flex flex-row gap-1.5">
+        <span class="text-xs font-semibold">Already have an account?</span>
+        <a href="{% url 'main:login' %}" class="text-xs font-semibold text-gray-500 hover:text-yellow-300 underline">Login Now</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}
