@@ -374,6 +374,9 @@ Fungsi dari penggunaan `await` ketika kita menggunakan `fetch` adalah untuk menu
 #### Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
 Kita perlu menggunakan decorator `csrf_exempt` pada view yang akan digunakan untuk AJAX POST agar request POST yang dikirim melalui AJAX tidak memerlukan token CSRF. Jika kita tidak menggunakan decorator `csrf_exempt`, maka request POST yang dikirim melalui AJAX akan memerlukan token CSRF. Hal ini dapat menyebabkan request POST yang dikirim melalui AJAX gagal karena tidak menyertakan token CSRF.
 
+#### Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+Pembersihan data input pengguna dilakukan di belakang (backend) juga karena data input pengguna dapat dimanipulasi oleh user. Jika pembersihan data input pengguna dilakukan di frontend saja, maka user dapat memanipulasi data input pengguna sebelum data tersebut dikirim ke server. Hal ini dapat menyebabkan data input pengguna yang tidak valid atau berbahaya disimpan di database. Dengan melakukan pembersihan data input pengguna di belakang (backend), kita dapat memastikan bahwa data input pengguna yang disimpan di database valid dan aman.
+
 #### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
 1. Ubah Kode Cards Data Mood untuk Mendukung AJAX GET: Mengubah kode pada `views.py` untuk mendukung AJAX GET dengan mengubah fungsi `show_json` dan `show_xml`.
 ```python
