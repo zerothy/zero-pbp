@@ -4,22 +4,24 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core import serializers
 from main.forms import ProductForm
 from main.models import Product, FeaturedProduct
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.utils.html import strip_tags
+import bleach
 
 @login_required(login_url='main:login')
 def show_main(request):
-    product = Product.objects.filter(user=request.user)
     featured_product = FeaturedProduct.objects.filter(product__user=request.user)
 
     context = {
         'username': request.user.username,
         'featured_product': featured_product,
-        'product': product,
         'last_login': request.COOKIES['last_login']
     }
 
@@ -39,6 +41,35 @@ def create_product(request):
     }
 
     return render(request, "create_product.html", context)
+
+@csrf_exempt
+@require_POST
+def add_product_ajax(request):
+    name = bleach.clean(request.POST.get('name'), strip=True, tags=[], attributes={})
+    price = bleach.clean(request.POST.get('price'), strip=True, tags=[], attributes={})
+    description = bleach.clean(request.POST.get('description'), strip=True, tags=[], attributes={})
+    stock = bleach.clean(request.POST.get('stock'), strip=True, tags=[], attributes={})
+    user = request.user
+
+    if not name:
+        return JsonResponse({'status': 'ERROR', 'message': 'Name is required.'}, status=400)
+    if not price:
+        return JsonResponse({'status': 'ERROR', 'message': 'Price is required.'}, status=400)
+    if not description:
+        return JsonResponse({'status': 'ERROR', 'message': 'Description is required.'}, status=400)
+    if not stock:
+        return JsonResponse({'status': 'ERROR', 'message': 'Stock is required.'}, status=400)
+
+    new_product = Product(
+        name=name,
+        price=price,
+        description=description,
+        stock=stock,
+        user=user,
+    )
+    new_product.save()
+
+    return JsonResponse({'status': 'CREATED'}, status=201)
 
 def edit_product(request, id):
     product = Product.objects.get(pk = id)
@@ -94,11 +125,11 @@ def logout_user(request):
     return response
 
 def show_xml(request):
-    data = Product.objects.all()
+    data = Product.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('xml', data), content_type='application/xml')
 
 def show_json(request):
-    data = Product.objects.all()
+    data = Product.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', data), content_type='application/json')
 
 def show_xml_by_id(request, id):

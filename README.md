@@ -358,3 +358,21 @@ def delete_product(request, id):
     </div>
 </nav>
 ```
+
+## Tugas 6
+#### Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+JavaScript adalah bahasa pemrograman yang digunakan untuk membuat aplikasi web menjadi interaktif dan dinamis. Manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web adalah sebagai berikut: 
+1. **Interaktivitas**: JavaScript memungkinkan developers untuk membuat aplikasi web yang interaktif dan responsif. Dengan menggunakan JavaScript
+2. **Validasi Form**: JavaScript memungkinkan developers untuk melakukan validasi form pada sisi klien. Dengan menggunakan JavaScript, developers dapat memvalidasi data yang dimasukkan oleh user sebelum data tersebut dikirim ke server.
+3. **Manipulasi DOM**: JavaScript memungkinkan developers untuk memanipulasi DOM (Document Object Model) pada sisi klien. Dengan menggunakan JavaScript
+4. **Ajax**: JavaScript memungkinkan developers untuk membuat aplikasi web yang asinkron. Dengan menggunakan JavaScript
+5. **Animasi**: JavaScript memungkinkan developers untuk membuat animasi pada aplikasi web. Dengan menggunakan JavaScript
+
+#### Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+Fungsi dari penggunaan `await` ketika kita menggunakan `fetch` adalah untuk menunggu hingga proses fetch selesai sebelum melanjutkan eksekusi kode selanjutnya. Jika kita tidak menggunakan `await`, maka kode selanjutnya akan dieksekusi sebelum proses fetch selesai. Hal ini dapat menyebabkan data yang diambil dari server tidak tersedia saat kode selanjutnya dieksekusi. Dengan menggunakan `await`, kita dapat memastikan bahwa data yang diambil dari server tersedia sebelum kode selanjutnya dieksekusi.
+
+#### Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+Kita perlu menggunakan decorator `csrf_exempt` pada view yang akan digunakan untuk AJAX POST agar request POST yang dikirim melalui AJAX tidak memerlukan token CSRF. Jika kita tidak menggunakan decorator `csrf_exempt`, maka request POST yang dikirim melalui AJAX akan memerlukan token CSRF. Hal ini dapat menyebabkan request POST yang dikirim melalui AJAX gagal karena tidak menyertakan token CSRF.
+
+#### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+1. 
