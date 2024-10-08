@@ -375,4 +375,74 @@ Fungsi dari penggunaan `await` ketika kita menggunakan `fetch` adalah untuk menu
 Kita perlu menggunakan decorator `csrf_exempt` pada view yang akan digunakan untuk AJAX POST agar request POST yang dikirim melalui AJAX tidak memerlukan token CSRF. Jika kita tidak menggunakan decorator `csrf_exempt`, maka request POST yang dikirim melalui AJAX akan memerlukan token CSRF. Hal ini dapat menyebabkan request POST yang dikirim melalui AJAX gagal karena tidak menyertakan token CSRF.
 
 #### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
-1. 
+1. Ubah Kode Cards Data Mood untuk Mendukung AJAX GET: Mengubah kode pada `views.py` untuk mendukung AJAX GET dengan mengubah fungsi `show_json` dan `show_xml`.
+```python
+def show_json(request):
+    data = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', data), content_type='application/json')
+```
+```python
+def show_xml(request):
+    data = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('xml', data), content_type='application/xml')
+```
+
+2. Menggunakan Fetch API untuk Mengambil Data JSON dan XML: Menggunakan Fetch API pada JavaScript untuk mengambil data JSON dan XML dari server.
+```javascript
+fetch('/show_json')
+    .then(response => response.json())
+    .then(data => {
+        ...
+    });
+```
+
+3. Menggunakan `htmlString` dan `classNameString` untuk Menampilkan Data: Menggunakan `htmlString` dan `classNameString` pada JavaScript untuk menampilkan data JSON dan XML ke dalam elemen HTML.
+```javascript
+let htmlString = '';
+data.forEach(item => {
+    htmlString += `...`
+});
+document.querySelector('.cards').innerHTML = htmlString;
+```
+
+4. Membuat button untuk membuka modals yang dibuat dengan menggunakan `javascript` dan fitur POST AJAX. 
+5. Membuat fungsi baru pada `views.py` untuk menambahkan produk dengan menggunakan AJAX POST.
+```python
+@csrf_exempt
+@require_POST
+def add_product_ajax(request):
+    name = bleach.clean(request.POST.get('name'), strip=True, tags=[], attributes={})
+    price = bleach.clean(request.POST.get('price'), strip=True, tags=[], attributes={})
+    description = bleach.clean(request.POST.get('description'), strip=True, tags=[], attributes={})
+    stock = bleach.clean(request.POST.get('stock'), strip=True, tags=[], attributes={})
+    user = request.user
+
+    if not name:
+        return JsonResponse({'status': 'ERROR', 'message': 'Name is required.'}, status=400)
+    if not price:
+        return JsonResponse({'status': 'ERROR', 'message': 'Price is required.'}, status=400)
+    if not description:
+        return JsonResponse({'status': 'ERROR', 'message': 'Description is required.'}, status=400)
+    if not stock:
+        return JsonResponse({'status': 'ERROR', 'message': 'Stock is required.'}, status=400)
+
+    new_product = Product(
+        name=name,
+        price=price,
+        description=description,
+        stock=stock,
+        user=user,
+    )
+    new_product.save()
+
+    return JsonResponse({'status': 'CREATED'}, status=201)
+```
+
+6. Membuat path `/create-ajax/` di `urls.py` untuk menambahkan produk dengan menggunakan AJAX POST.
+```python
+path('create-ajax/', views.add_product_ajax, name='add_product_ajax'),
+```
+
+7. Menghubungkan form pada modal dengan fungsi `add_product_ajax` yang telah dibuat.
+
+8. Merefresh halaman setelah produk berhasil ditambahkan dengan menggunakan fungsi `refreshProcts` pada JavaScript.
